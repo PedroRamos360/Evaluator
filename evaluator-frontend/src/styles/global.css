@@ -1,0 +1,13 @@
+* {
+	font-family: Cabin;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--white:#FFFFFF;
+	--background: #21CAFF;
+	--blue-line: #047295;
+	--green: #4EFF95;
+}
