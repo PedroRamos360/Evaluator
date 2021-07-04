@@ -8,6 +8,10 @@
 :root {
 	--white:#FFFFFF;
 	--background: #21CAFF;
+	--background-dark:rgb(31, 181, 226);
+	--background-darker: rgb(29, 150, 187);
 	--blue-line: #047295;
+	--blue-text: #3C8AFF;
 	--green: #4EFF95;
+	--messageGreen: #05FF00;
 }

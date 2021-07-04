@@ -1,0 +1,25 @@
+.line1 {
+	width: 500px;
+	height: 1px;
+	right: 400px;
+	bottom: 100px;
+	border-bottom: 1px solid var(--blue-line);
+	-webkit-transform:
+		translateY(100%)
+		translateX(100%)
+		rotate(-45deg);
+	position: fixed;
+}
+
+.line2 {
+	width: 300px;
+	height: 1px;
+	right: 700px;
+	bottom: 100px;
+	border-bottom: 1px solid var(--blue-line);
+	-webkit-transform:
+		translateY(40px)
+		translateX(800px)
+		rotate(-45deg);
+	position: fixed;
+}
