@@ -1,12 +1,29 @@
 .background {
 	height: 80vh;
+	margin-top: -40vh;
 	width: 80vw;
+	margin-left: -40vw;
 	background-color: #DFDFDF;
 	position: fixed;
-	justify-self: center;
-	align-self: center;
+	top: 50%;
+	left: 50%;
 	border-radius: 20px;
 	padding: 0 30px 30px 30px;
+	z-index: 2;
+}
+.backgroundHidden {
+	visibility: hidden;
+	height: 80vh;
+	margin-top: -40vh;
+	width: 80vw;
+	margin-left: -40vw;
+	background-color: #DFDFDF;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	border-radius: 20px;
+	padding: 0 30px 30px 30px;
+	z-index: 2;
 }
 
 .header {

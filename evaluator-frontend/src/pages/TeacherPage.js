@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from '../styles/pages/TeacherPage.module.css';
 import TopLeftLines from '../components/TopLeftLines';
@@ -7,23 +7,22 @@ import Message from '../components/Message';
 import MessageContent from '../components/MessageContent';
 
 export default function TeacherPage() {
+	const [isHidden, setIsHidden] = useState(true);
 	function messageClicked() {
-
+		setIsHidden(false);
 	}
 	return (
 		<>
 			<TopLeftLines />
-			<div className={`${styles.teacherMessageContent} `}>
-				<MessageContent />
-			</div>
+			<MessageContent isHidden={isHidden} setIsHidden={setIsHidden}/>
 			<main className={styles.teacherContainer}>
 				<h1 className={styles.teacherTitle}>Mensagens</h1>
 				<div className={styles.teacherMessages}>
 					{ }
-					<Message />
-					<Message />
-					<Message />
-					<Message />
+					<Message onClick={messageClicked} />
+					<Message onClick={messageClicked} />
+					<Message onClick={messageClicked} />
+					<Message onClick={messageClicked} />
 				</div>
 			</main>
 			<BottomRightLines />
