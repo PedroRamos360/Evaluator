@@ -12,7 +12,6 @@ function App() {
 		<>
 		<TopLeftLines />
 		<main className={styles.homeContainer}>
-
 			<div>
 				<h1 className={styles.homeTitle}>Evaluator</h1>
 				<p className={styles.homeDetails}>Melhore suas aulas ouvindo a opinião de seus alunos!</p>
