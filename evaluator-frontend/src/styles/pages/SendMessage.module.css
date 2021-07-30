@@ -8,3 +8,28 @@
 	padding: 50px;
 	background-color: var(--background);
 }
+
+.button {
+	height: 60px;
+	width: 300px;
+	border: none;
+	cursor: pointer;
+	transition: 0.2s;
+	border-radius: 5px;
+	background-color: var(--green);
+	font-size: 20px;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-left: 110px;
+	padding-right: 110px;
+}
+
+.button:hover {
+	background-color: #31f57f;
+}
+
+.button:active {
+	background-color: #21df6d;
+}
