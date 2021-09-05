@@ -1,10 +1,3 @@
-.teacherTitle {
-	font-style: bold;
-	color: var(--white);
-	margin-bottom: 20px;
-	font-size: 36px;
-}
-
 .teacherContainer {
 	height: 100vh;
 	width: 100vw;
@@ -15,24 +8,69 @@
 	background-color: var(--background);
 }
 
+.teacherTitle {
+	font-style: bold;
+	color: var(--white);
+	margin-bottom: 20px;
+	font-size: 36px;
+}
+
 .teacherMessages {
 	width: 100vw;
 	height: 80vh;
 	display: grid;
 	align-items: center;
 	grid-template-columns: 1fr 1fr;
+	overflow-y: scroll;
 }
-
-/* .teacherMessageContent {
-	height: 100vh;
-	width: 100vw;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: fixed;
-	z-index: 2;
-} */
 
 .hidden {
 	visibility: hidden;
+}
+
+.header {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.logOutContainer {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	height: 100px;
+	background-color: #89E3FF;
+	border-radius: 8px;
+	justify-content: center;
+	align-items: center;
+}
+
+.logOutFake {
+	background-color: transparent;
+}
+
+.usernameText {
+	color: white;
+	margin-bottom: 10px;
+
+}
+
+.button {
+	width: 150px;
+	height: 30px;
+	color: white;
+	background-color: #F51720;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.button:hover {
+	background-color: #db161d;
+}
+
+.button:active {
+	background-color: #b81116;
 }
