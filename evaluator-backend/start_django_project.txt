@@ -1,0 +1,20 @@
+1) Criar virtualenv para o projeto
+2) Instalar django e rest_framework no virtualenv:
+    pip install django djangorestframework
+3) Criar um projeto django:
+    django-admin startprojetct nome_do_projeto
+4) Criar um app dentro do projeto:
+    django-admin startapp nome_do_app
+5) No arquivo settings.py do projeto ir para INSTALLED_APPS e adicionar o app:
+    'nome_do_app.apps.ApiConfig'
+6) Aind em settings.py adicionar o rest_framework como app também:
+    'rest_framework'
+7) Criar um arquivo chamado urls no app e adicionar as urls dentro
+8) Referenciar o arquivo urls do app no arquivo urls do projeto:
+    path('', include('api.urls')) // importar include de django.urls
+9) criar views e criar urls para elas serem acessadas
+10) rodar os comandos de commands.txt para fazer as migrações e criar o banco de dados:
+    python .\manage.py makemigrations
+    python .\manage.py migrate
+11) Criar um arquivo my_serializers com os serializer que vão ser usados nas views
+12) Criar modelos para os serializers
