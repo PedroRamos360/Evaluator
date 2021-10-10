@@ -1,9 +1,10 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 from django.forms.models import model_to_dict
-from .models import Message, User, MessageFormat
+from .models import Message, User
 from .serializers import UserSerializer, CreateUserSerializer, MessageSerializer
 from django.contrib.auth.hashers import make_password
+import json
 
 
 class GetUsers(generics.ListAPIView):
@@ -47,8 +48,9 @@ class SendMessage(generics.CreateAPIView):
             subject = data['subject']
             users = User.objects.filter(username=receiver)
             new_message = Message(message_id, sender, receiver, subject)
+            new_message.save()
             user_receiver = users[0]
-            m = MessageFormat(x=new_message, y=user_receiver)
-            m.save()
+            user_receiver.messages.add(new_message)
+            user_receiver.save()
             return Response(model_to_dict(user_receiver), status=status.HTTP_200_OK)
         return Response({'Error': 'Invalid Request'}, status=status.HTTP_400_BAD_REQUEST)
