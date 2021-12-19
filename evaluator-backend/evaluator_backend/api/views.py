@@ -4,7 +4,6 @@ from django.forms.models import model_to_dict
 from .models import Message, User
 from .serializers import UserSerializer, CreateUserSerializer, MessageSerializer
 from django.contrib.auth.hashers import make_password
-from collections import ChainMap
 
 class GetUsers(generics.ListAPIView):
     serializer_class = UserSerializer
@@ -29,14 +28,21 @@ class CreateUser(generics.CreateAPIView):
 
 
 class GetMessages(generics.ListAPIView):
+    serializer_class = MessageSerializer
+    queryset = Message.objects.all()
     def get(self, request, receiver=None, format=None):
         messages = Message.objects.filter(receiver=receiver)
-        all_messages = []
+        newqs = []
         for message in messages:
-            all_messages.append(model_to_dict(message))
-        return Response(all_messages, status=status.HTTP_200_OK)
-
+            newqs.append({
+                "id": message.id,
+                "sender": message.sender,
+                "receiver": message.receiver,
+                "content": message.content,
+            })
         
+        return Response(newqs, status=status.HTTP_200_OK)
+
 
 class SendMessage(generics.CreateAPIView):
     serializer_class = MessageSerializer
@@ -50,7 +56,8 @@ class SendMessage(generics.CreateAPIView):
             sender = data['sender']
             receiver = data['receiver']
             subject = data['subject']
-            new_message = Message(message_id, sender, receiver, subject)
+            content = data['content']
+            new_message = Message(message_id, sender, receiver, subject, content)
             new_message.save()
             return Response(model_to_dict(new_message), status=status.HTTP_200_OK)
         return Response({'Error': 'Invalid Request'}, status=status.HTTP_400_BAD_REQUEST)
