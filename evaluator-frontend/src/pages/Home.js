@@ -17,23 +17,34 @@ function App() {
 			const users = response.data;
 			let userExists = false;
 			users.forEach(userGot => {
-				console.log([userGot.username, user])
 				if (userGot.username === user) {
 					userExists = true;
 				}
 			});
 			if (userExists) {
-				console.log("usuário existe!!!")
-				// mandar api.post para verificação de usuário (ainda não existe no backend)
+				localStorage.setItem('user', user)
+				localStorage.setItem('password', password)
+				api.get(`verify-user/${user}/${password}`).then(response => {
+					if (response.data) {
+						history.push('teacherpage')
+					} else {
+						alert('Usuário ou senha incorretos')
+					}
+				})
 			} else {
-				console.log('usuário não existe!!!')
-				api.post('create-user', {
-					username: user,
-					password: password,
-				});
+				// eslint-disable-next-line no-restricted-globals
+				const proceed = confirm('O usuário digitado não existe. Clique em "OK" para criar um novo usuário com a senha digitada')
+				if (proceed) {
+					localStorage.setItem('user', user)
+					localStorage.setItem('password', password)
+					api.post('create-user', {
+						username: user,
+						password: password,
+					});
+					history.push('teacherpage')
+				}
 			}
 		});
-		history.push('teacherpage')
 	}
 	return (
 		<>
