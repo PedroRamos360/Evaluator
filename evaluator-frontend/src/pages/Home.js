@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../components/Input';
 import '../styles/global.css';
 import styles from '../styles/pages/Home.module.css';
@@ -9,8 +9,14 @@ import api from '../services/api';
 
 function App() {
 	const history = useHistory();
-	const [user, setUser] = useState();
-	const [password, setPassword] = useState();
+	const [user, setUser] = useState('');
+	const [password, setPassword] = useState('');
+
+	useEffect(() => {
+		if (localStorage.getItem('user') && localStorage.getItem('password')) {
+			history.push('teacherpage');
+		}
+	}, [history]);
 
 	async function handleButtonClicked() {
 		await api.get('get-users').then(response => {
@@ -21,7 +27,9 @@ function App() {
 					userExists = true;
 				}
 			});
-			if (userExists) {
+			if (user === '') {
+
+			} else if (userExists) {
 				localStorage.setItem('user', user)
 				localStorage.setItem('password', password)
 				api.get(`verify-user/${user}/${password}`).then(response => {

@@ -15,15 +15,17 @@ export default function TeacherPage() {
 	const [username, setUsername] = useState('');
 	const [messages, setMessages] = useState([]);
 
+	const [messageId, setMessageId] = useState();
 	const [messageSender, setMessageSender] = useState('');
 	const [messageSubject, setMessageSubject] = useState('');
+	const [messageContent, setMessageContent] = useState('');
 
 	function messageClicked(e) {
 		setIsHidden(false);
-		console.log(e.currentTarget.getAttribute('a'));
-		console.log('jorge');
-		// setMessageSender(e.sender);
-		// setMessageSubject(e.subject);
+		setMessageId(e.currentTarget.getAttribute('Id'));
+		setMessageSender(e.currentTarget.getAttribute('sender'));
+		setMessageSubject(e.currentTarget.getAttribute('subject'));
+		setMessageContent(e.currentTarget.getAttribute('content'))
 	}
 
 	function handleDisconnect() {
@@ -40,14 +42,15 @@ export default function TeacherPage() {
 		} else {
 			api.get(`get-messages/${username}`).then(response => {
 				setMessages(response.data);
-				console.log(response.data);
 			})
 		}
 	}, [username, history]);
 	return (
 		<>
 			<TopLeftLines />
-			<MessageContent isHidden={isHidden} setIsHidden={setIsHidden} sender={messageSender} subject={messageSubject}/>
+			<MessageContent isHidden={isHidden} setIsHidden={setIsHidden}
+				Id={messageId} sender={messageSender} subject={messageSubject} content={messageContent}
+			/>
 			<main className={styles.teacherContainer}>
 				<header className={styles.header}>
 					<div className={`${styles.logOutContainer} ${styles.logOutFake}`}></div>
@@ -61,7 +64,9 @@ export default function TeacherPage() {
 				</header>
 				<div className={styles.teacherMessages}>
 					{ messages.map(message => {
-						return <Message a={'ada'} subject={message.subject} sender={message.sender} onClick={(e) => messageClicked(e)} />
+						return <Message subject={message.subject}
+							Id={message.id} sender={message.sender} content={message.content} onClick={(e) => messageClicked(e)}
+						/>
 					})}
 				</div>
 			</main>
