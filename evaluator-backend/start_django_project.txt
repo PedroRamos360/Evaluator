@@ -17,4 +17,7 @@
     python .\manage.py makemigrations
     python .\manage.py migrate
 11) Criar um arquivo my_serializers com os serializer que vão ser usados nas views
-12) Criar modelos para os serializers
+12) Criar models
+13) Criar serializers (serializers transformam as informações dos models em padrão JSON)
+14) OBS: AO PUBLICAR APLICAÇÃO CRIAR REPOSITÓRIO DENTRO DA PASTA DO PROJETO DJANGO NÃO DA
+GERAL O CORNO beijos Pedro
