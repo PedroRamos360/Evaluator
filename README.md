@@ -3,9 +3,10 @@ Evaluator is an web application made with Javascript and React for the frontend 
 has the goal to help teachers receive feedback from students about their classes so they can improve it in the future. Some students may find it 
 hard to make an honest critic about their teachers and having the name of the sender in the messages may make them biased. That's why the application 
 doesn't require students to put their name, if it's left blank the application automaticly fills in the sender as anonymous.
+
 The application is written all in portuguese.
-Link to the application:
-https://evaluator-frontend.herokuapp.com/
+
+Link to the application: https://evaluator-frontend.herokuapp.com/
 
 ![2022-03-01 (2)](https://user-images.githubusercontent.com/53490820/156173146-159ebfab-6b05-428d-b2c3-a3239a14a860.png)
 ![2022-03-01 (3)](https://user-images.githubusercontent.com/53490820/156173145-b2828545-d74d-4954-8b2f-bf25dd108905.png)
